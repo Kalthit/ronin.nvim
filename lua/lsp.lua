@@ -37,13 +37,50 @@ local lsp_flags = {
   debounce_text_changes = 150,
 }
 
+lspconfig.lua_ls.setup{
+  on_attach = on_attach,
+  flags = lsp_flags,
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = {'vim'},
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
 lspconfig.pyright.setup{
     on_attach = on_attach,
     flags = lsp_flags,
+    cmd = { "pyright-langserver", "--stdio" },
+    filetypes = { "python" },
+    settings = {
+      pyright = { autoImportCompletion = true, },
+      python = {
+        analysis = {
+          autoSearchPaths = true,
+          diagnosticMode = "openFilesOnly",
+          useLibraryCodeForTypes = true,
+          typeCheckingMode = "off"
+        }
+      }
+    },
+    single_file_support = true,
 }
 
 lspconfig.rust_analyzer.setup{
-  on_attach = _attach,
+  on_attach = on_attach,
+  cmd = { "rust-analyzer" },
+  filetypes = { "rust" },
   settings = {
     ['rust-analyzer'] = {
       imports = {
@@ -65,7 +102,7 @@ lspconfig.rust_analyzer.setup{
 }
 
 lspconfig.clangd.setup({
-    on_attach = _attach,
+    on_attach = on_attach,
     cmd = {
     "clangd",
     "--background-index",

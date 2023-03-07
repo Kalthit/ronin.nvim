@@ -1,0 +1,6 @@
+require("options")
+require("modules")
+require("ui")
+require("treesitter")
+require("lsp")
+require("completion")

@@ -6,12 +6,12 @@ vim.opt.number = true
 vim.opt.background = "dark"
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
-vim.opt.tabstop = 2	
+vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.shiftround = true
 vim.opt.autoindent = true
-vim.opt.smartindent = true 
+vim.opt.smartindent = true
 vim.opt.scrolloff = 15
 vim.opt.sidescrolloff = 30
 vim.opt.textwidth = 1000
@@ -25,3 +25,12 @@ vim.opt.encoding = "utf-8"
 vim.opt.termencoding = "utf-8"
 vim.opt.fileencodings = "utf-8"
 vim.opt.spelllang = { "en" }
+
+vim.diagnostic.config({
+  virtual_text = true,
+  severity_sort = true,
+  float = {
+    border = 'rounded',
+    source = 'always',
+  },
+})

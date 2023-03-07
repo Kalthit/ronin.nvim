@@ -76,7 +76,7 @@ cmp.setup({
 
     ['<C-e>'] = cmp.mapping.abort(),
     ['<C-y>'] = cmp.mapping.confirm({select = true}),
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
+    ['<CR>'] = cmp.mapping.confirm({select = true}),
 
     ['<C-f>'] = cmp.mapping(function(fallback)
       if luasnip.jumpable(1) then

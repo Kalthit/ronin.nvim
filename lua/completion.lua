@@ -1,7 +1,14 @@
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
 
-local cmp = require("cmp")
-local luasnip = require("luasnip")
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then
+  return
+end
+
+local __status_ok, luasnip = pcall(require, "luasnip")
+if not __status_ok then
+  return
+end
 
 local select_opts = {behavior = cmp.SelectBehavior.Select}
 

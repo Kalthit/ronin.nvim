@@ -1,3 +1,11 @@
+local cache_dir = vim.env.HOME .. "/.cache/nvim/"
+
+vim.opt.directory = cache_dir .. "swap/"
+vim.opt.undodir = cache_dir .. "undo/"
+vim.opt.backupdir = cache_dir .. "backup/"
+vim.opt.viewdir = cache_dir .. "view/"
+vim.opt.spellfile = cache_dir .. "spell/en.uft-8.add"
+
 vim.opt.autoread = true
 vim.opt.autowrite = true
 vim.opt.pumblend = 10
@@ -30,7 +38,7 @@ vim.diagnostic.config({
   virtual_text = true,
   severity_sort = true,
   float = {
-    border = 'rounded',
-    source = 'always',
+    border = "rounded",
+    source = "always",
   },
 })

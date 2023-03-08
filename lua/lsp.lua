@@ -4,7 +4,10 @@ require("mason-lspconfig").setup({
   ensure_installed = { "lua_ls", "rust_analyzer", "pyright", "clangd", },
 })
 
-local lspconfig = require("lspconfig")
+local status_ok, lspconfig = pcall(require, "lspconfig")
+if not status_ok then
+  return
+end
 
 local opts = { noremap=true, silent=true }
 vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
